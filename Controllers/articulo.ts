@@ -6,6 +6,8 @@ const { validarArticulo } = require("../helpers/validar");
 
 export const crearArticulo = async (req: Request, res: Response) => {
     try {
+        // * CUANDO TENGA QUE AGREGAR UNA NUEVA PARTE DEL FORMULARIO,AGREGAR ACA EL NOMBRE DE LA NUEVA PARTE (NV1)SIGNIFICA LUGARES DONDE SE AGREGAN 
+        //*LOS NUEVOS NOMBRES
         const { titulo, precio, seccion,categoria } = req.body;
 
         // Validar datos del formulario
@@ -23,9 +25,11 @@ export const crearArticulo = async (req: Request, res: Response) => {
         // Crear el nuevo artículo según la sección seleccionada
         switch (seccion) {
             case 'remera':
+                // * (NV1)
                 nuevoArticulo = new Remera({ titulo, precio,categoria});
                 break;
             case 'pantalon':
+                // * (NV1)
                 nuevoArticulo = new Pantalon({ titulo, precio,categoria });
                 break;
             default:
