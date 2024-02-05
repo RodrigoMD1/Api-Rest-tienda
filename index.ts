@@ -2,6 +2,7 @@ const { conectaBD } = require("./base-datos/conexion")
 import express from "express";
 import cors from "cors";
 import { crearArticulo } from "./Controllers/articulo";
+import { obtenerTodosLosArticulos, obtenerRemeras, obtenerPantalon } from './Controllers/articulo';
 
 // inicializar app
 console.log("App de node arrancada");
@@ -22,11 +23,17 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "pug");
 
 // crear rutas
-
 app.post('/api/articulos', crearArticulo);
-// ...
+
+// esta son las rutas para pedir las colecciones 
+app.get('/api/remeras', obtenerRemeras);
+app.get('/api/pantalones', obtenerPantalon);
+app.get('/api/articulos', obtenerTodosLosArticulos);
 
 // crear servidor y escuchar peticiones http
 app.listen(PORT, () => {
     console.log("Servidor corriendo en el puerto " + PORT);
 });
+
+
+
